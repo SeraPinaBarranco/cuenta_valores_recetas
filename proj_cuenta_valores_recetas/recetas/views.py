@@ -11,3 +11,5 @@ class RecetasIndex(TemplateView):
         context['titulo'] = 'Indice recetas'
         return context
     
+class RecetasCreate(TemplateView):
+    template_name = "recetas/crear_recetas.html"
