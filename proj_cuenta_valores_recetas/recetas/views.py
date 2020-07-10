@@ -16,8 +16,8 @@ class RecetasIndex(TemplateView):
         return context
     
 class RecetasCreate(CreateView):
-    model= Recetas
-    #fields= '__all__'
+    #model= Recetas
+   
     form_class = FormRecetas
-    #template_name = "recetas/crear_recetas.html"
-    success_url = reverse_lazy('recetas:indice_recetas')
+    template_name = "recetas/crear_recetas.html"
+    success_url = reverse_lazy('indice_recetas')

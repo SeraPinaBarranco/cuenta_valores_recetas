@@ -9,8 +9,16 @@
     
 
 {% block body %}
+    <div class="container">
+        <div class="row">
+            <form method="POST">{% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Grabar</button>
+            </form>
+        </div>
+
+    </div>
     
-    {{ form.as_p }}
     
 {% endblock body %}
     

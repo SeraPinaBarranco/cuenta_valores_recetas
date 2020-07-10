@@ -13,6 +13,9 @@ class Recetas(models.Model):
     titulo= models.CharField(verbose_name='Titulo', max_length=80)
     ingredientes= models.ManyToManyField(Ingredientes, null=True, blank= True)
 
+    def __str__(self):
+        return self.titulo
+
     class Meta:
         verbose_name= 'Receta'
         verbose_name_plural= 'Recetas'

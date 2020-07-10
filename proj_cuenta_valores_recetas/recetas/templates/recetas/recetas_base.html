@@ -20,20 +20,21 @@
         <div class="row">{{ titulo }}</div>
     </div>
 
-    <div class="container">
-        <ul class="nav">
-            <li class="nav-item {% if request.path == '/recetas/' %} active {% endif %}">
-                <a class="nav-link"  href="{% url 'indice_recetas' %}">Indice recetas</a>
-                
-            </li>     
-            <li class="nav-item  {% if request.path == '/crear_recetas' %} active {% endif %}">
-                <a class="nav-link "  href="{% url 'crear_recetas' %}">Crear recetas</a>
-                
-            </li>        
-        </ul>
+    <div class="container m-2" style="background-color: rgba(189, 197, 82, 0.39);">
+        <div class="row">
+            <ul class="nav">
+                <li class="nav-item {% if request.path == '/recetas/' %} active {% endif %}">
+                    <a class="nav-link"  href="{% url 'indice_recetas' %}">Indice recetas</a>
+                    
+                </li>     
+                <li class="nav-item  {% if request.path == '/crear_recetas' %} active {% endif %}">
+                    <a class="nav-link "  href="{% url 'crear_recetas' %}">Crear recetas</a>                    
+                </li>        
+            </ul>
+        </div>
     </div>
     
-    <p>{{ request.path }}</p>
+    
 
     {% block body %}
        BASE.html 
