@@ -1,0 +1,51 @@
+{% extends 'recetas/recetas_base.html' %}
+
+
+
+{% load static %}
+
+{% block title %}
+   
+    {{ titulo }}
+   
+{% endblock title %}
+    
+{% block body %}
+
+    <div class="container c">
+        <div class="row" >
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Opciones</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John</td>
+                        <td> <a href="">Editar <i> </i> </a> / <a href="">Borrar <i></i> </a></td>
+                        
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    
+    
+{% endblock body %}
+
+{% block scripting %}
+<script>
+    $(document).ready( function () {
+        
+        $('#ejemplo').DataTable();
+    } );
+</script>
+{% endblock scripting %}
+
+
+    

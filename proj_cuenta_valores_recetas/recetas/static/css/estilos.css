@@ -1,0 +1,22 @@
+.c{
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    padding: 0.5rem;
+    color: lavender;
+    font-weight: bold;
+    background-color: rgb(159, 175, 174);
+    border-radius: 0.3rem;
+    box-shadow: 0.2rem 0.2rem rgb(122, 110, 228);
+    text-align: center;
+}
+a{color: white;
+  font-weight: bold;}
+
+td{
+    color: lavender;
+    font-weight: bold;
+}
+th{
+    color: rgb(5, 152, 189);
+    font-weight: bold;
+}

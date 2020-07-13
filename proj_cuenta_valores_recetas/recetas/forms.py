@@ -17,8 +17,9 @@ class FormRecetas(forms.ModelForm):
         fields= ['titulo',]
 
         widgets = {
-            'titulo': forms.TextInput(attrs={'class':'form-control '}),
+            'titulo': forms.TextInput(attrs=
+                {'class':'form-control ml-3'}),
         }
-
+        
     
     

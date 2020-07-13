@@ -4,16 +4,20 @@
 {% load static %}
 
 {% block title %}
-    Crear Recetas
+   
+    {{ titulo }}
+   
 {% endblock title %}
     
 
 {% block body %}
-    <div class="container">
-        <div class="row">
+
+    <div class="container c">
+        <div class="row" >
             <form method="POST">{% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Grabar</button>
+                {{ form.titulo.label }}
+                {{ form.titulo }}
+                <button type="submit" class="btn btn-primary">Grabar</button>
             </form>
         </div>
 
