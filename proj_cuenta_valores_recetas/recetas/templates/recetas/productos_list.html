@@ -29,12 +29,12 @@
                 </thead>
                 <tbody>
                     
-                    {% for r in object_list %}
+                    {% for p in object_list %}
                     <tr>
-                        <td>{{ r.titulo }}</td>
+                        <td>{{ p.producto }}</td>
                         <td>
                             <a href=""><i class="fas fa-edit" style="font-size:24px;color:rgb(77, 173, 252)"></i></a> / 
-                            <a href="{% url 'eliminar_receta' r.pk %}" ><i class="fas fa-trash-alt" style='font-size:24px; color: red;'> </i> </a> 
+                            <a href="" ><i class="fas fa-trash-alt" style='font-size:24px; color: red;'> </i> </a> 
                         </td>                        
                     </tr>  
                     {% endfor %}

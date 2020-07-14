@@ -1,0 +1,77 @@
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(18, 141, 241);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 3rem;
+}
+
+.sidenav a {
+  padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fffdfd;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav .sublist{
+    margin-left: 0.6rem ; 
+    font-size: 1rem;
+}
+
+.sidenav a:hover {
+  color: #ffee00;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+
+<div>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Recetas</a>
+            <a href="{% url 'listar_recetas' %}" class="sublist">Listado de recetas</a>
+            <a href="{% url 'crear_recetas' %}" class="sublist">Crear receta</a>
+        <a href="#">Productos</a>
+             <a href="{% url 'listar_productos' %}" class="sublist">Listado de productos</a>
+        
+    </div>
+
+   
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Men&uacute;</span>
+
+    <script>
+        function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>    
+
+</div>

@@ -1,0 +1,19 @@
+{% extends 'recetas/recetas_base.html' %}
+
+{% load static %}
+
+{% block title %}
+   
+    {{ titulo }}
+   
+{% endblock title %}
+    
+
+{% block body %}
+    <div class="container c">
+        <form method="POST">{% csrf_token %}
+            <p>Estas seguro que quieres eliminar "{{ object.titulo }}"?</p>
+            <input class="btn btn-danger" type="submit" value="Borrar">
+        </form>
+    </div>
+{% endblock body %}
