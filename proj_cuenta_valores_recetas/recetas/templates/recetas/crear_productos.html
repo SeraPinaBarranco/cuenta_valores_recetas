@@ -1,0 +1,28 @@
+
+{% extends 'recetas/recetas_base.html' %}
+
+{% load static %}
+
+{% block title %}
+   
+    {{ titulo }}
+   
+{% endblock title %}
+    
+
+{% block body %}
+
+    <div class="container c" >
+        <div class="row justify-content-center"  >
+            <form method="POST">{% csrf_token %}
+                {{ form.as_p }}
+               
+                <button type="submit" class="btn btn-primary">Grabar</button>
+            </form>
+        </div>
+
+    </div>
+    
+    
+{% endblock body %}
+    

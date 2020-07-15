@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from .models import Productos, Recetas
-from .forms import FormRecetas
+from .forms import FormRecetas, FormProductos
 
 # Create your views here.
 ###VISTAS DE RECETAS#####
@@ -53,4 +53,18 @@ class ProductosListView(ListView):
         context = super().get_context_data(**kwargs)
         context['titulo']= 'Listado de productos'
         return context
+
+class ProductosCreate(CreateView):
+    #model= Recetas
+   
+    form_class = FormProductos
+    template_name = "recetas/crear_productos.html"
+    success_url = reverse_lazy('listar_productos')
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(ProductosCreate, self).get_context_data(**kwargs)
+        context['titulo']= 'Crear Producto'
+        return context
+
     

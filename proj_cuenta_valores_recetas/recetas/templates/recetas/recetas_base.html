@@ -8,26 +8,17 @@
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <!--bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
     
     {% block css %}
         
     {% endblock css %}
-        
-    
- 
-    <title>
-        
-            {% block title %}
+    <title>        
+        {% block title %}
             
-            {% endblock title %}
-        
-        
+        {% endblock title %}
     </title>
 </head>
 <body>
-
-    
     {% include 'recetas/base_menu_lateral.html' %}
 
     <div class="container c">
@@ -47,9 +38,6 @@
             </ul>
         </div>
     </div>
-    
-    
-
     {% block body %}
        BASE.html 
     {% endblock body %}
