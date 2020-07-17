@@ -1,5 +1,5 @@
 from django.urls import include, path
-from .views import RecetasCreate, RecetasIndex, RecetasListView, RecetasDelete, ProductosListView, ProductosCreate
+from .views import *
 
 urlpatterns = [
     path('', RecetasIndex.as_view(), name='indice_recetas' ),  
@@ -8,5 +8,8 @@ urlpatterns = [
     path('eliminar_receta/<pk>', RecetasDelete.as_view(), name='eliminar_receta' ),
     path('listar_productos', ProductosListView.as_view(), name='listar_productos' ),
     path('crear_producto', ProductosCreate.as_view(), name='crear_producto' ),
+    path('actualizar_receta/<pk>', RecetasUpdate.as_view(), name='actualizar_receta' ),
+    path('add_ingrediente', IngredientesCreate.as_view(), name='add_ingrediente' ), 
+    
 
 ]
