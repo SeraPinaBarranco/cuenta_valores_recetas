@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    
 {% endblock css %}
     
 
@@ -33,8 +34,11 @@
                     <tr>
                         <td>{{ r.titulo }}</td>
                         <td>
-                            <a href=""><i class="fas fa-edit" style="font-size:24px;color:rgb(77, 173, 252)"></i></a> / 
-                            <a href="{% url 'eliminar_receta' r.pk %}" ><i class="fas fa-trash-alt" style='font-size:24px; color: red;'> </i> </a> 
+                            <a href="{% url 'actualizar_receta' r.pk %}"><i class="fas fa-edit" style="font-size:24px;color:rgb(77, 173, 252)"></i></a> / 
+                            <a href="{% url 'eliminar_receta' r.pk %}" ><i class="fas fa-trash-alt" style='font-size:24px; color: red;'> </i> </a> /
+                            <a href="{% url 'add_ingrediente' %}" ><i class="fa fa-plus" style="font-size:24px;color:rgb(231, 235, 32)"></i>  </a>
+
+                            
                         </td>                        
                     </tr>  
                     {% endfor %}

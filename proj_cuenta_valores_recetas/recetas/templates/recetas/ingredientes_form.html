@@ -1,0 +1,64 @@
+
+{% extends 'recetas/recetas_base.html' %}
+
+{% load static %}
+
+{% block title %}
+   
+    {{ titulo }}
+   
+{% endblock title %}
+    
+
+{% block body %}
+
+    <div class="container c">
+        <div class="row" >
+
+            <div class="container">
+                <select class="js-example-basic-single col-6" name="state" id="state" onchange="mostrar_valor()">
+                    {% for p in productos %}
+                        <option value="{{ p.pk }}">{{ p }}</option> 
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <form method="POST">{% csrf_token %}
+
+
+                <button type="submit" class="btn btn-primary">Añadir</button>
+            </form>
+        </div>
+
+        <div>
+            
+            
+                
+            
+                
+        </div>
+
+    </div>
+
+    
+{% endblock body %}
+
+
+{% block scripts %}
+
+<!--SELECT2-->
+<script src="{% static 'scripts/select2/select2.min.js' %}"></script>
+<script>
+    
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2();
+    });
+
+    function mostrar_valor(){
+            var x = document.getElementById("state").value;
+            alert(x);
+        };
+</script> 
+
+{% endblock scripts %}
+    

@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
-from .models import Productos, Recetas
+from .models import Productos, Recetas, Ingredientes
 from .forms import FormRecetas, FormProductos
 
 # Create your views here.
@@ -40,7 +40,14 @@ class RecetasListView(ListView):
         return context
 
 class RecetasDelete(DeleteView):
+    #form_class= FormRecetas
     model = Recetas
+    success_url = reverse_lazy('listar_recetas')
+
+class RecetasUpdate(UpdateView):
+    model = Recetas  
+    form_class = FormRecetas  
+    #fields = ['titulo']
     success_url = reverse_lazy('listar_recetas')
 ##########################
 
@@ -65,6 +72,20 @@ class ProductosCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super(ProductosCreate, self).get_context_data(**kwargs)
         context['titulo']= 'Crear Producto'
+        return context
+##########################
+
+###VISTAS DE INGREDIENTES####
+class IngredientesCreate(CreateView):
+    model= Ingredientes     
+    success_url = reverse_lazy('listar_recetas')
+    fields= '__all__'
+
+    
+    def get_context_data(self, **kwargs):
+        context = super(IngredientesCreate, self).get_context_data(**kwargs)
+        context['productos'] = Productos.objects.all()
+        context['titulo']= 'Añadir Ingrediente'
         return context
 
     
