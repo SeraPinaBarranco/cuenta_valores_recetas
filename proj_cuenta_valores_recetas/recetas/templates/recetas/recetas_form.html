@@ -12,12 +12,12 @@
 
 {% block body %}
 
-    <div class="container c" >
-        <div class="row justify-content-center"  >
+    <div class="container c">
+        <div class="row" >
             <form method="POST">{% csrf_token %}
-                {{ form.as_p }}
-               
-                <button type="submit" class="btn btn-primary text-center">Grabar</button>
+                {{ form.titulo.label }}
+                {{ form.titulo }}
+                <button type="submit" class="btn btn-primary">Actualizar</button>
             </form>
         </div>
 

@@ -13,7 +13,7 @@ class FormRecetas(forms.ModelForm):
 
         widgets = {
             'titulo': forms.TextInput(attrs=
-                {'class':'form-control ml-3'}),
+                {'class':'form-control ml-3 mb-2 text-center'}),
         }
 
 class FormProductos(forms.ModelForm):    
@@ -27,11 +27,13 @@ class FormProductos(forms.ModelForm):
 
         widgets = {
                 'producto': forms.TextInput(attrs=
-                    {'class':'form-control ml-3'}),
+                    {'class':'form-control ml-3 text-center'}),
+
                 'calorias': forms.TextInput(attrs=
-                {'class':'form-control ml-3'}),
+                {'class':'form-control ml-3 text-center'}),
+
                 'grasas': forms.TextInput(attrs=
-                    {'class':'form-control ml-3'}),
+                    {'class':'form-control ml-3 text-center'}),
             }
         
     
