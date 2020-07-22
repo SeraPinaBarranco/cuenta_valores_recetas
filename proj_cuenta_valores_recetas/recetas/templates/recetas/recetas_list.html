@@ -36,7 +36,7 @@
                         <td>
                             <a href="{% url 'actualizar_receta' r.pk %}"><i class="fas fa-edit" style="font-size:24px;color:rgb(77, 173, 252)"></i></a> / 
                             <a href="{% url 'eliminar_receta' r.pk %}" ><i class="fas fa-trash-alt" style='font-size:24px; color: red;'> </i> </a> /
-                            <a href="{% url 'add_ingrediente' %}" ><i class="fa fa-plus" style="font-size:24px;color:rgb(231, 235, 32)"></i>  </a>
+                            <a href="{% url 'add_ingrediente' r.pk %}" ><i class="fa fa-plus" style="font-size:24px;color:rgb(231, 235, 32)"></i>  </a>
 
                             
                         </td>                        

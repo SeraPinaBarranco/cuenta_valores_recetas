@@ -9,7 +9,7 @@ urlpatterns = [
     path('listar_productos', ProductosListView.as_view(), name='listar_productos' ),
     path('crear_producto', ProductosCreate.as_view(), name='crear_producto' ),
     path('actualizar_receta/<pk>', RecetasUpdate.as_view(), name='actualizar_receta' ),
-    path('add_ingrediente', IngredientesCreate.as_view(), name='add_ingrediente' ), 
+    path('add_ingrediente/<pk>', AddIngre2RecetaUpdate.as_view(), name='add_ingrediente' ), 
     
 
 ]

@@ -69,23 +69,41 @@ class ProductosCreate(CreateView):
     success_url = reverse_lazy('listar_productos')
 
     
-    def get_context_data(self, **kwargs):
-        context = super(ProductosCreate, self).get_context_data(**kwargs)
-        context['titulo']= 'Crear Producto'
-        return context
+   #def get_context_data(self, **kwargs):
+    #    context = super(ProductosCreate, self).get_context_data(**kwargs)
+    #    context['titulo']= 'Crear Producto'
+    #    return context
 ##########################
 
-###VISTAS DE INGREDIENTES####
-class IngredientesCreate(CreateView):
-    model= Ingredientes     
+###VISTAS DE INGREDIENTES A RECETA####
+class AddIngre2RecetaUpdate(UpdateView):
+    model = Recetas  
+    #form_class = FormRecetas  
+    #fields = ['titulo']
+    template_name= 'recetas/ingredientes_form.html'
     success_url = reverse_lazy('listar_recetas')
     fields= '__all__'
 
     
     def get_context_data(self, **kwargs):
-        context = super(IngredientesCreate, self).get_context_data(**kwargs)
+        context = super(AddIngre2RecetaUpdate, self).get_context_data(**kwargs)
         context['productos'] = Productos.objects.all()
         context['titulo']= 'Añadir Ingrediente'
         return context
+    
+    def post(self, request, *args, **kwargs):
+        """
+        Handle POST requests: instantiate a form instance with the passed
+        POST variables and then check if it's valid.
+        """
+        self.object = self.get_object()
+        form = self.get_form()
+        print(self.object.pk)
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+    
+    
 
     
