@@ -87,6 +87,7 @@ class AddIngre2RecetaUpdate(UpdateView):
     
     def get_context_data(self, **kwargs):
         context = super(AddIngre2RecetaUpdate, self).get_context_data(**kwargs)
+        
         context['productos'] = Productos.objects.all()
         context['titulo']= 'Añadir Ingrediente'
         return context
