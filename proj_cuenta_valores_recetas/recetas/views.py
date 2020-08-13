@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
+from django.core import serializers
+from django.forms import model_to_dict
 from .models import Productos, Recetas, Ingredientes
 from .forms import FormRecetas, FormProductos
 
@@ -88,7 +90,20 @@ class AddIngre2RecetaUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(AddIngre2RecetaUpdate, self).get_context_data(**kwargs)
         
+        data = serializers.serialize('python', Productos.objects.all(), fields=('producto'))
+        #serializers.serialize('python', DictModel.objects.all())
+        #print(data)
+
         context['productos'] = Productos.objects.all()
+        context['productos'] = data
+
+       
+
+        for d in data:
+            print (type(d['fields']['producto']))
+            v = d['fields']['producto']
+        context['productos'] = dict(v)
+        #print(context['productos']['producto'])
         context['titulo']= 'Añadir Ingrediente'
         return context
     
@@ -100,6 +115,7 @@ class AddIngre2RecetaUpdate(UpdateView):
         self.object = self.get_object()
         form = self.get_form()
         print(self.object.pk)
+
         if form.is_valid():
             return self.form_valid(form)
         else:

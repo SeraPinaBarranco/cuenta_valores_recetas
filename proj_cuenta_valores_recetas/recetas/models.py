@@ -1,3 +1,4 @@
+from django.forms import model_to_dict
 from django.db import models
 
 # Create your models here.
@@ -5,6 +6,10 @@ class Productos(models.Model):
     producto= models.CharField(verbose_name='Producto', max_length=70, null=True, blank=True)
     calorias = models.DecimalField(verbose_name='Calorias', max_digits=6, decimal_places=2)
     grasas= models.DecimalField(verbose_name='Grasas', max_digits=6, decimal_places=2)
+
+    def get_model_to_JSON(self):
+        item = model_to_dict(self)
+        return item
 
     def __str__(self):
         return self.producto
@@ -34,3 +39,4 @@ class Recetas(models.Model):
     class Meta:
         verbose_name= 'Receta'
         verbose_name_plural= 'Recetas'
+
