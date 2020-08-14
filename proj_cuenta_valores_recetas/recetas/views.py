@@ -1,9 +1,11 @@
+import json
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from django.core import serializers
+from django.core.serializers.json import DjangoJSONEncoder
 from django.forms import model_to_dict
 from .models import Productos, Recetas, Ingredientes
 from .forms import FormRecetas, FormProductos
@@ -89,21 +91,17 @@ class AddIngre2RecetaUpdate(UpdateView):
     
     def get_context_data(self, **kwargs):
         context = super(AddIngre2RecetaUpdate, self).get_context_data(**kwargs)
+
+        prods = Productos.objects.all()
         
-        data = serializers.serialize('python', Productos.objects.all(), fields=('producto'))
-        #serializers.serialize('python', DictModel.objects.all())
-        #print(data)
+        lista= [{'producto': prod.producto} for prod in prods ]
+        
 
-        context['productos'] = Productos.objects.all()
-        context['productos'] = data
+        #convertir eso en un json
+        serializado = json.dumps(lista)
+        print(type(serializado))
 
-       
-
-        for d in data:
-            print (type(d['fields']['producto']))
-            v = d['fields']['producto']
-        context['productos'] = dict(v)
-        #print(context['productos']['producto'])
+        context['productos'] = lista
         context['titulo']= 'Añadir Ingrediente'
         return context
     
@@ -122,5 +120,21 @@ class AddIngre2RecetaUpdate(UpdateView):
             return self.form_invalid(form)
     
     
+"""
 
+        data = serializers.serialize('python', Productos.objects.all())
+        #serializers.serialize('python', DictModel.objects.all())
+        print(data)
+
+        #context['productos'] = Productos.objects.all()
+        #context['productos'] = data
+
+        datos = ['e','r', '5']
+
+        #for d in data:
+        #    print (d['fields']['producto'])
+        #    datos.append(d['fields']['producto'])
+            
+        context['productos'] = datos   
+"""
     

@@ -27,7 +27,7 @@
             <div class="container">
                 <select class="js-example-basic-single col-6" name="state" id="state" onchange="mostrar_valor()">
                     {% for p in productos %}
-                        <option id="{{ p.pk }}">{{ p }}</option> 
+                        <option id="{{ p.pk }}">{{ p|safe }}</option> 
                     {% endfor %}
                 </select>
             </div>
@@ -55,6 +55,11 @@
             placeholder: 'Select an option',
             allowClear: true 
         });
+        
+        var l = "{{ productos|safe }}";
+        
+        var pp = JSON.parse(l);
+        console.log(pp);
     });
 
     function mostrar_valor(){
