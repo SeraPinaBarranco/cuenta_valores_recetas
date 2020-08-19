@@ -84,24 +84,41 @@ class AddIngre2RecetaUpdate(UpdateView):
     model = Recetas  
     #form_class = FormRecetas  
     #fields = ['titulo']
-    template_name= 'recetas/ingredientes_form.html'
+    template_name= 'recetas/ingredientes_form.html'    
     success_url = reverse_lazy('listar_recetas')
     fields= '__all__'
 
     
+    
     def get_context_data(self, **kwargs):
         context = super(AddIngre2RecetaUpdate, self).get_context_data(**kwargs)
 
-        prods = Productos.objects.all()
+        productos = Productos.objects.all()
+
+        lista_productos = []
+        indice = 0
+        for p in productos:
+            datos = {}
+            datos['prod'] = p.producto
+            lista_productos.append(datos)
+            indice = indice + 1
         
-        lista= [{'producto': prod.producto} for prod in prods ]
+        context['indice'] = int(indice)
+        context['productos'] = json.dumps(lista_productos)
+        
+        print(context['productos'])
+
+        #prods = Productos.objects.all()
+        
+        #lista= [{'producto': prod.producto} for prod in prods ]
         
 
         #convertir eso en un json
-        serializado = json.dumps(lista)
-        print(type(serializado))
+        #serializado = json.dumps(lista)        
 
-        context['productos'] = lista
+        #context['productos'] = lista
+        
+
         context['titulo']= 'Añadir Ingrediente'
         return context
     
@@ -119,7 +136,7 @@ class AddIngre2RecetaUpdate(UpdateView):
         else:
             return self.form_invalid(form)
     
-    
+
 """
 
         data = serializers.serialize('python', Productos.objects.all())

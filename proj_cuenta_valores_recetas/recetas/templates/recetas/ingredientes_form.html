@@ -26,15 +26,13 @@
 
             <div class="container">
                 <select class="js-example-basic-single col-6" name="state" id="state" onchange="mostrar_valor()">
-                    {% for p in productos %}
-                        <option id="{{ p.pk }}">{{ p|safe }}</option> 
-                    {% endfor %}
+                   
                 </select>
             </div>
            
         </div>
 
-       
+       {{ context }}
 
     </div>
 
@@ -55,19 +53,30 @@
             placeholder: 'Select an option',
             allowClear: true 
         });
-        
-        var l = "{{ productos|safe }}";
-        
-        var pp = JSON.parse(l);
-        console.log(pp);
+
+        var lista = JSON.parse('{{ productos|safe }}');
+        var indice = parseInt('{{ indice }}')
+        //console.log( lista[1].prod);
+        for(i=0; i < indice; i++){
+            crear_option(i, String(lista[i].prod), "state");          
+        }
     });
 
     function mostrar_valor(){
-            var x = document.getElementById("state");
+            var x = document.getElementById("state")
+            
             var p = document.getElementById("prod");
-            p.value = x;
-            alert(typeof x);
+            
+            p.value = x.value;
     };
+
+    function crear_option(i, valor, mySelect){
+        var x = document.getElementById(mySelect);
+        var c = document.createElement("option");
+        c.setAttribute("id",String(i));
+        c.text = valor;
+        x.options.add(c, i);
+    }
 </script> 
 
 {% endblock scripts %}

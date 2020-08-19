@@ -7,10 +7,6 @@ class Productos(models.Model):
     calorias = models.DecimalField(verbose_name='Calorias', max_digits=6, decimal_places=2)
     grasas= models.DecimalField(verbose_name='Grasas', max_digits=6, decimal_places=2)
 
-    def get_model_to_JSON(self):
-        item = model_to_dict(self)
-        return item
-
     def __str__(self):
         return self.producto
 
