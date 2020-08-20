@@ -105,9 +105,7 @@ class AddIngre2RecetaUpdate(UpdateView):
         
         context['indice'] = int(indice)
         context['productos'] = json.dumps(lista_productos)
-        
-        print(context['productos'])
-
+                
         #prods = Productos.objects.all()
         
         #lista= [{'producto': prod.producto} for prod in prods ]
@@ -120,6 +118,7 @@ class AddIngre2RecetaUpdate(UpdateView):
         
 
         context['titulo']= 'Añadir Ingrediente'
+    
         return context
     
     def post(self, request, *args, **kwargs):
@@ -129,12 +128,18 @@ class AddIngre2RecetaUpdate(UpdateView):
         """
         self.object = self.get_object()
         form = self.get_form()
-        print(self.object.pk)
+        
+        print(request.POST['prod'])
 
         if form.is_valid():
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
+    
+    
+    def dispatch(self, request, *args, **kwargs):
+        
+        return super().dispatch(request, *args, **kwargs)
     
 
 """

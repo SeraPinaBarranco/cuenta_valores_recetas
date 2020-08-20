@@ -27,7 +27,7 @@ class Ingredientes(models.Model):
 
 class Recetas(models.Model):
     titulo= models.CharField(verbose_name='Titulo', max_length=80)
-    ingredientes= models.ManyToManyField(Ingredientes, null=True, blank= True)
+    ingredientes= models.ManyToManyField(Ingredientes, null=True, blank= True, related_name='ingredientes')
 
     def __str__(self):
         return self.titulo 
