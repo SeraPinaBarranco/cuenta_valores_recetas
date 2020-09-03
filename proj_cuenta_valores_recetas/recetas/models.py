@@ -36,3 +36,4 @@ class Recetas(models.Model):
         verbose_name= 'Receta'
         verbose_name_plural= 'Recetas'
 
+

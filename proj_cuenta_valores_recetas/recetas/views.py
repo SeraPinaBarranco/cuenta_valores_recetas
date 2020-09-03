@@ -129,7 +129,7 @@ class AddIngre2RecetaUpdate(UpdateView):
         self.object = self.get_object()
         form = self.get_form()
         
-        print(request.POST['prod'])
+        #print(request.POST['prod'])
 
         if form.is_valid():
             return self.form_valid(form)
